@@ -6,18 +6,19 @@ id_editora varchar (10) primary key not null unique,
 editora varchar (20) not null unique
 );
 
-create table livro_amazon(
-id_livro varchar (10) not null unique primary key,
-titulo varchar (70) not null,
-ano_lancamento year not null,
-premio varchar (60),
-id_editora varchar (10) not null unique,
-foreign key (id_editora) references editora (id_editora)
+create table autor(
+id_autor varchar (10) primary key not null unique,
+autor varchar (60) not null unique
 );
 
-create table premio(
-id_premio varchar (10) primary key not null unique,
-premio varchar (60) not null unique
+create table livro_amazon(
+id_livro varchar (10) not null unique primary key,
+titulo varchar (100) not null,
+autor varchar (60) not null unique,
+foreign key (autor) references autor (autor),
+ano_lancamento int not null,
+editora varchar (10) not null unique,
+foreign key (editora) references editora (editora)
 );
 
 create table usuario_amazon(
@@ -28,8 +29,11 @@ origem varchar (60) not null
 create table nota_livro(
 id_nota varchar (10) primary key not null unique,
 nota int not null,
-id_livro varchar (10) unique not null,
+id_livro varchar (10) not null unique,
 foreign key (id_livro) references livro_amazon(id_livro),
 id_usuario varchar (2) not null unique,
 foreign key (id_usuario) references usuario_amazon (id_usuario)
 );
+
+insert into livro_amazon 
+values ("0195153448", "Classical Mythology", "Mark P. O. Morford", year(2002), "Oxford University Press");

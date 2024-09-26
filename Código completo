@@ -28,10 +28,8 @@ origem varchar (60) not null
 
 create table nota_livro(
 nota int not null,
-id_livro varchar (10) not null unique,
-foreign key (id_livro) references livro_amazon(id_livro),
-id_usuario varchar (4) not null unique,
-foreign key (id_usuario) references usuario_amazon (id_usuario)
+id_livro varchar (10) not null,
+foreign key (id_livro) references livro_amazon(id_livro)
 );
 
 insert into editora
@@ -237,26 +235,26 @@ values("276725","nyc, new york, usa"),
 ("u51", "london, england, united kingdom");
 
 insert into nota_livro
-value ("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
-("","",),
+value ("0","",),
+("5","",),
+("0","",),
+("3","",),
+("6","",),
+("0","",),
+("8","",),
+("6","",),
+("7","",),
+("10","",),
+("0","",),
+("0","",),
+("0","",),
+("0","",),
+("0","",),
+("0","",),
+("9","",),
+("0","",),
+("0","",),
+("9","",),
 ("","",),
 ("","",),
 ("","",),
@@ -287,3 +285,9 @@ value ("","",),
 ("","",),
 ("","",),
 ("","",);
+
+
+
+
+
+drop database livros_da_amazon;

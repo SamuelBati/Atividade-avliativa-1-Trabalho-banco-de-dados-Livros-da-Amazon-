@@ -1,0 +1,35 @@
+create database if not exists livros_da_amazon;
+use livros_da_amazon;
+
+create table editora(
+id_editora varchar (10) primary key not null,
+editora varchar (60) not null unique
+);
+
+create table autor(
+id_autor varchar (10) primary key,
+autor varchar (60) not null unique 
+);
+
+create table livro_amazon(
+id_livro varchar (10) primary key not null unique,
+titulo varchar (150) not null,
+autor varchar (60) not null,
+foreign key (autor) references autor (autor),
+ano_lancamento int not null,
+editora varchar (60) not null,
+foreign key (editora) references editora (editora)
+);
+
+create table usuario_amazon(
+id_usuario varchar (4) primary key not null unique,
+origem varchar (60) not null
+);
+
+create table nota_livro(
+nota int not null,
+id_livro varchar (10) not null,
+foreign key (id_livro) references livro_amazon(id_livro),
+id_usuario varchar(4) not null,
+foreign key (id_usuario) references usuario_amazon (id_usuario)
+);
